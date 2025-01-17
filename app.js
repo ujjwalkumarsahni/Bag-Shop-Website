@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+const expressSession = require('express-session');
+
 
 // Load environment variables from .env file
 require('dotenv').config(); 
@@ -13,6 +16,7 @@ const user = require('./models/user.model.js');
 const owner = require('./models/owner.model.js');   
 const Product = require('./models/product.model.js');
 
+const indexRouter = require('./routes/index.js');
 const usersRouter = require('./routes/user.route.js');
 const ownersRouter = require('./routes/owner.route.js');
 const productsRouter = require('./routes/product.route.js');
@@ -23,6 +27,16 @@ const app = express()
 
 app.use(express.json());
 app.use(cookieParser())
+
+app.use(
+    expressSession({
+        resave: false,
+        saveUninitialized: false,
+        secret: process.env.EXPRESS_SESSION_SECRET,
+    })
+);
+app.use(flash());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
@@ -31,7 +45,8 @@ app.set("view engine", "ejs");
 app.use('/users', usersRouter);
 app.use('/owners', ownersRouter);
 app.use('/products', productsRouter);
-// app.use('/', )
+app.use('/', indexRouter)
+
 
 const port = process.env.PORT || 5000; 
 app.listen(port, (err) => {
