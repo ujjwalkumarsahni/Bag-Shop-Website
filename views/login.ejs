@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+  <div class="bg-white shadow-lg rounded-lg w-full max-w-2xl p-8 md:flex">
+    <!-- Form Section -->
+    <div class="w-full">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Sign in</h2>
+      <form action="/login" method="POST" class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-600 mb-1">Your Email</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 19.5a8.25 8.25 0 0115 0" />
+              </svg>
+            </span>
+            <input type="email" id="email" name="email" placeholder="Your Email" class="w-full pl-10 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+          </div>
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-600 mb-1">Password</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5v-.75a3 3 0 10-6 0v.75M9.75 13.5h4.5" />
+              </svg>
+            </span>
+            <input type="password" id="password" name="password" placeholder="Password" class="w-full pl-10 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input type="checkbox" id="remember" name="remember" class="w-4 h-4 text-blue-500 border-gray-300 rounded focus:ring-blue-400">
+            <label for="remember" class="ml-2 text-sm text-gray-600">Remember me</label>
+          </div>
+          <a href="#" class="text-sm text-blue-500 underline">Forgot password?</a>
+        </div>
+        <button type="submit" class="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">Log in</button>
+      </form>
+
+      <p class="mt-4 text-center text-sm text-gray-500">
+        <a href="/signup" class="text-blue-500 underline">Create an account</a>
+      </p>
+      <div class="mt-4 text-center">
+        <p class="text-sm text-gray-500 mb-2">Or login with</p>
+        <div class="flex justify-center space-x-4">
+          <a href="#" class="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-5 h-5">
+              <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm1.91 8.79h-.62V13h-2.2V8.79H6.3V6.64h.78V5.9c0-.87.42-2.21 2.21-2.21h1.41v1.95h-.99c-.16 0-.39.08-.39.43v.77h1.39L10.5 8.8z"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 bg-blue-400 text-white rounded-full hover:bg-blue-500">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-5 h-5">
+              <path d="M16 3.039c-.588.261-1.22.436-1.885.515A3.293 3.293 0 0 0 15.555 2c-.623.37-1.314.637-2.05.78A3.286 3.286 0 0 0 11.075.5a3.285 3.285 0 0 0-3.19 4.028A9.325 9.325 0 0 1 1.114 2.11 3.286 3.286 0 0 0 2.13 7.206a3.319 3.319 0 0 1-1.487-.41v.041a3.285 3.285 0 0 0 2.63 3.219c-.278.076-.573.116-.875.116-.213 0-.42-.02-.623-.06a3.287 3.287 0 0 0 3.066 2.277 6.585 6.585 0 0 1-4.076 1.403c-.265 0-.525-.016-.784-.046A9.312 9.312 0 0 0 5.032 15c6.037 0 9.341-5 9.341-9.341 0-.142-.004-.284-.011-.425A6.675 6.675 0 0 0 16 3.039z"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 bg-red-600 text-white rounded-full hover:bg-red-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-5 h-5">
+              <path d="M8.16 3.8H8a4.16 4.16 0 1 0 0 8.32h.16a4.16 4.16 0 1 0 0-8.32zm.84 5.4h-1.28v-2.56h1.28v2.56zm0-3.28h-1.28V4.8h1.28v1.12z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
