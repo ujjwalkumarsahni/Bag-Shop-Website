@@ -13,10 +13,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    cart:{
-        type: Array,
-        default: []
-    },
+    cart:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "product"
+    }],
     orders: {
         type: Array,
         default: []

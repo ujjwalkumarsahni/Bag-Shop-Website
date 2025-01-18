@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <a href="/" class="text-xl font-bold text-blue-600">BrandLogo</a>
+                </div>
+                <div class="flex space-x-4 items-center">
+                    <a href="/shop" class="text-gray-700 hover:text-blue-600">Shop</a>
+                    <a href="/cart" class="text-gray-700 hover:text-blue-600">Cart</a>
+                    <a href="/users/logout" class="text-red-600 hover:underline">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+        <div class="flex flex-col items-center md:flex-row md:space-x-6">
+            <!-- Profile Picture -->
+            <div class="w-24 h-24 md:w-32 md:h-32">
+                <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full rounded-full object-cover">
+            </div>
+            
+            <!-- Profile Info -->
+            <div class="mt-4 md:mt-0 text-center md:text-left">
+                <h1 class="text-2xl font-semibold text-gray-800"><%= user.fullname %></h1>
+                <p class="text-gray-600"><%= user.email %></p>
+                <p class="mt-2 text-sm text-gray-500">
+                    Contact: <%= user.contact ? user.contact : "Not provided" %>
+                </p>
+                <div class="mt-4 flex justify-center md:justify-start space-x-4">
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700">
+                        Edit Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Section -->
+    <div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Cart</h2>
+        <% if (user.cart && user.cart.length > 0) { %>
+            <ul class="divide-y divide-gray-200">
+                <% user.cart.forEach(product => { %>
+                    <li class="py-4 flex justify-between items-center">
+                        <div>
+                            <h3 class="text-gray-800 font-medium"><%= product.name %></h3>
+                            <p class="text-sm text-gray-500">Price: ₹<%= product.price %></p>
+                        </div>
+                        <a href="/cart/remove/<%= product._id %>" class="text-red-600 hover:underline">Remove</a>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p class="text-gray-500">Your cart is empty.</p>
+        <% } %>
+    </div>
+</body>
+</html>

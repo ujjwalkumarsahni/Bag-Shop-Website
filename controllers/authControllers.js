@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const userModel = require('../models/user.model.js');
-const productModel = require('../models/product.model.js');
 const { generateToken } = require('../utils/generateToken.js');
 
 module.exports.registerUser = async (req, res) => {
@@ -25,9 +24,7 @@ module.exports.registerUser = async (req, res) => {
 
                         const token = generateToken(user);
                         res.cookie("token", token);
-
-                        const products = await productModel.find();
-                        res.render('shop', {products})
+                        res.redirect('/shop');
                     }
                 })
             }
@@ -49,9 +46,7 @@ module.exports.loginUser = async (req,res) =>{
         if(result){
             const token = generateToken(user);
             res.cookie("token",token);
-
-            const products = await productModel.find();
-            res.render('shop', {products})
+            res.redirect('/shop');
         }
         else{
             return res.status(500).send("Email and password is incorrect");

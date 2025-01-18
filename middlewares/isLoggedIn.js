@@ -1,11 +1,11 @@
-const { jwt } = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const userModel = require('../models/user.model.js');
 
 
 module.exports = async (req,res,next) =>{
     if(!req.cookies.token){
         req.flash("error", "You can login first");
-        res.redirect('/');
+        return res.redirect('/');
     }
 
     try{
@@ -15,7 +15,10 @@ module.exports = async (req,res,next) =>{
         req.user = user;
         next();
     }catch (err) {
-        req.flash("error", "Somthing went wrong");
-        res.redirect('/');
+        console.error("JWT Verification Error:", err.message);
+        req.flash("error", "Invalid session, please log in again");
+        res.redirect("/");
     }
 }
+
+

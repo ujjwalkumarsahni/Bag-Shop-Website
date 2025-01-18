@@ -43,10 +43,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
 // Import routes
+app.use('/', indexRouter)
 app.use('/users', usersRouter);
 app.use('/owners', ownersRouter);
 app.use('/products', productsRouter);
-app.use('/', indexRouter)
 
 
 const port = process.env.PORT || 5000; 
