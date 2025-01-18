@@ -9,7 +9,8 @@ const expressSession = require('express-session');
 require('dotenv').config(); 
 
 // Import the database
-const db = require('./db/connectDB.js'); 
+const connectDB = require('./db/connectDB.js'); 
+connectDB();
 
 // Import your models
 const user = require('./models/user.model.js');
